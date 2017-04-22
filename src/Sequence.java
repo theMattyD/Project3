@@ -21,7 +21,7 @@ public class Sequence {
     
     // ------------------------ ITERATIVE METHOD -------------------------------
     public int computeIterative(int userInput) {
-        System.out.println("GIT TEST");
+        
         efficiency = 0;
         int value[] = new int[userInput + 1];
         value[0] = 0;
@@ -38,13 +38,14 @@ public class Sequence {
     // ------------------------ RECURSIVE METHOD -------------------------------   
     public int computeRecursive(int userInput) {
         efficiency++;
-        if (userInput == 0)
-            return 0;
-        else if (userInput == 1)
-            return 1;
-        else {
-            number = (2 * computeRecursive(userInput-1) + computeRecursive(userInput-2));
-            return number;
+        switch (userInput) {
+            case 0:
+                return 0;
+            case 1:
+                return 1;
+            default:
+                number = (2 * computeRecursive(userInput-1) + computeRecursive(userInput-2));
+                return number;
         }
     }
     
