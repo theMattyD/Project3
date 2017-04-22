@@ -21,6 +21,7 @@ public class Sequence {
     
     // ------------------------ ITERATIVE METHOD -------------------------------
     public int computeIterative(int userInput) {
+        System.out.println("GIT TEST");
         efficiency = 0;
         int value[] = new int[userInput + 1];
         value[0] = 0;
