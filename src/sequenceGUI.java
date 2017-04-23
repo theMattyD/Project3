@@ -11,6 +11,7 @@ import javax.swing.JOptionPane;
 public class sequenceGUI extends javax.swing.JFrame {
     
     public int number;
+    public int z;
 
     Sequence iterative = new Sequence(0);
     Sequence recursive = new Sequence(0);
@@ -155,7 +156,7 @@ public class sequenceGUI extends javax.swing.JFrame {
         recursive = new Sequence(0);
     }//GEN-LAST:event_resetButtonActionPerformed
 
-    // ---------------------- COMPUTE SEQUENCES METHOD -------------------------   
+    // ---------------------- CALL SEQUENCES METHOD(S) -------------------------   
     private void computeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_computeButtonActionPerformed
         
         
@@ -179,35 +180,36 @@ public class sequenceGUI extends javax.swing.JFrame {
     // ---------------------- OUTPUT DATA FILE UPON WINDOW CLOSE ---------------    
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
 
-        //prepare header
+        // OutputData.txt File Header
+        iterative = new Sequence(0);
+        recursive = new Sequence(0);
+        
         try (FileWriter dataOutput = new FileWriter("outputData.txt")) {
             
-            dataOutput.append("n");
-            
-            dataOutput.append(',');
-            dataOutput.append("Recursive");
-            
-            dataOutput.append(',');
+            dataOutput.append("n,");
+            dataOutput.append("Recursive,");
             dataOutput.append("Iterative");
-            
-            dataOutput.append(',');
-            dataOutput.append('\n');
-
-            for (int i = 0; i <= 10; i++) {
-                dataOutput.append(String.valueOf(i));
+            dataOutput.append("\n");
+ 
+            // outputData.txt Recursive and Iterative efficiency
+            for (z = 0; z <= 10; z++) {
+                dataOutput.append(String.valueOf(z));
                 dataOutput.append(",");
-                recursive.computeRecursive(i);
+                
+                recursive.computeRecursive(z);
                 dataOutput.append(String.valueOf(recursive.getEfficiency()));
+                System.out.println("recursive success " + z);
                 dataOutput.append(",");
-                iterative.computeIterative(i);
+                iterative.computeIterative(number);
                 dataOutput.append(String.valueOf(iterative.getEfficiency()));
+                System.out.println("iterative success " + z);
                 dataOutput.append("\n");
             }
             dataOutput.flush();
             dataOutput.close();
         } 
         catch (Exception e) {
-            System.out.println("Unable to write to the file" + e.getMessage() + " ");
+            evt.getID();
             System.exit(0);
         }
     
