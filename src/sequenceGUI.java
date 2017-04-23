@@ -181,15 +181,15 @@ public class sequenceGUI extends javax.swing.JFrame {
 
         //prepare header
         try (FileWriter dataOutput = new FileWriter("outputData.txt")) {
-            //prepare header
+            
             dataOutput.append("n");
-            // comma inserted to help the excel program to add a column
+            
             dataOutput.append(',');
             dataOutput.append("Recursive");
-            // comma inserted to help the excel program to add a column
+            
             dataOutput.append(',');
             dataOutput.append("Iterative");
-            // comma inserted to help the excel program to add a column
+            
             dataOutput.append(',');
             dataOutput.append('\n');
 
@@ -207,12 +207,12 @@ public class sequenceGUI extends javax.swing.JFrame {
             dataOutput.close();
         } 
         catch (Exception e) {
-            System.err.println("Unable to write to the file" + e.getMessage() + " ");
+            System.out.println("Unable to write to the file" + e.getMessage() + " ");
             System.exit(0);
         }
     
     }//GEN-LAST:event_formWindowClosing
-    // --------------------- VALIDATE USER-INPUT METHOD ------------------------
+// --------------------- VALIDATE USER-INPUT METHOD ------------------------
     private int validateAmount() throws NumberFormatException {
         int userInput;
         String message;
