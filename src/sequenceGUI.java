@@ -1,12 +1,11 @@
-
-import java.io.FileWriter;
-import javax.swing.JOptionPane;
-
 // Developer:   Matthew Daniels
 // Class:       CMIS 242 - Project 3
 // Date:        23 April 2017
 // Filename:    sequenceGUI.java
 // Purpose:     This file is the GUI class/component constructor for Sequence.java
+
+import java.io.FileWriter;
+import javax.swing.JOptionPane;
 
 public class sequenceGUI extends javax.swing.JFrame {
     
@@ -145,7 +144,6 @@ public class sequenceGUI extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
     // ----------------------- RESET EVERYTHING METHOD -------------------------    
     private void resetButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resetButtonActionPerformed
         inputTextField.setText("");
@@ -154,7 +152,6 @@ public class sequenceGUI extends javax.swing.JFrame {
         iterative = new Sequence(0);
         recursive = new Sequence(0);
     }//GEN-LAST:event_resetButtonActionPerformed
-
     // ---------------------- CALL SEQUENCES METHOD(S) -------------------------   
     private void computeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_computeButtonActionPerformed
         

@@ -55,5 +55,3 @@ public class Sequence {
         return efficiency;
     }    
 }
-    
-
