@@ -181,7 +181,7 @@ public class sequenceGUI extends javax.swing.JFrame {
 
            try {
             //prepare header
-            try (FileWriter dataOutput = new FileWriter("outData.txt")) {
+            try (FileWriter dataOutput = new FileWriter("outputData.txt")) {
                 //prepare header
                 dataOutput.append("n");
                 // comma inserted to help the excel program to add a column
@@ -206,6 +206,7 @@ public class sequenceGUI extends javax.swing.JFrame {
                 }
 
                 dataOutput.flush();
+                dataOutput.close();
             }
         } catch (Exception e) {
             System.err.println("Unable to write to the file" + e.getMessage() + " ");
