@@ -186,27 +186,32 @@ public class sequenceGUI extends javax.swing.JFrame {
         
         try (FileWriter dataOutput = new FileWriter("outputData.txt")) {
             
-            dataOutput.append("n,");
-            dataOutput.append("Recursive,");
-            dataOutput.append("Iterative");
+            dataOutput.append("n,\t");
+            dataOutput.append("Iterative Passes,\t");
+            dataOutput.append("Recursive Passes");
             dataOutput.append("\n");
  
             // outputData.txt Recursive and Iterative efficiency
             for (z = 0; z <= 10; z++) {
                 dataOutput.append(String.valueOf(z));
-                dataOutput.append(",");
+                dataOutput.append(",\t");
+                
+                iterative.computeIterative(z+1);
+                dataOutput.append(String.valueOf(iterative.getEfficiency()));
+                dataOutput.append(",\t\t\t");
+                System.out.print("iterative success " + z + " ");
                 
                 recursive.computeRecursive(z);
-                dataOutput.append(String.valueOf(recursive.getEfficiency()));
-                System.out.println("recursive success " + z);
-                dataOutput.append(",");
-                iterative.computeIterative(number);
-                dataOutput.append(String.valueOf(iterative.getEfficiency()));
-                System.out.println("iterative success " + z);
+                dataOutput.append(String.valueOf(recursive.getEfficiency()));             
                 dataOutput.append("\n");
+                
+                System.out.println("recursive success " + z);
+
+
             }
             dataOutput.flush();
             dataOutput.close();
+            System.exit(0);
         } 
         catch (Exception e) {
             evt.getID();

@@ -1,2 +1,12 @@
-n,Recursive,Iterative
-0,1,
+n,	Iterative Passes,	Recursive Passes
+0,	0,			1
+1,	1,			2
+2,	2,			5
+3,	3,			10
+4,	4,			19
+5,	5,			34
+6,	6,			59
+7,	7,			100
+8,	8,			167
+9,	9,			276
+10,	10,			453
