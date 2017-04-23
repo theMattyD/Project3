@@ -3,13 +3,13 @@
 // Date:        23 April 2017
 // Filename:    Sequence.java
 // Purpose:     This file is the utility class that generates the iterative and
-//              recursive number sequences, as well as tallies the runs for method
-//              efficiency output.
+//              recursive number sequences, as well as tallies the runs for 
+//              method efficiency output.
 
 public class Sequence {
     
     private int number;
-    private int efficiency = 0;
+    private int efficiency;
     
     public Sequence(int userInputArg) {
     number = userInputArg;
@@ -44,7 +44,8 @@ public class Sequence {
             case 1:
                 return 1;
             default:
-                number = (2 * computeRecursive(userInput-1) + computeRecursive(userInput-2));
+                number = (2 * computeRecursive(userInput-1) + 
+                          computeRecursive(userInput-2));
                 return number;
         }
     }

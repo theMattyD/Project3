@@ -11,7 +11,6 @@ import javax.swing.JOptionPane;
 public class sequenceGUI extends javax.swing.JFrame {
     
     public int number;
-    public int z;
 
     Sequence iterative = new Sequence(0);
     Sequence recursive = new Sequence(0);
@@ -161,60 +160,58 @@ public class sequenceGUI extends javax.swing.JFrame {
         
         
         try {
-            number = validateAmount();  // Validation checks
+            number = validateAmount();  // integer number validation check
         }
         catch (NumberFormatException e) {
             return;
         }
         if (iterativeButton.isSelected()) {
-            iterative.computeIterative(number);
+            iterative.computeIterative(number);         // iterative method
             resultTextField.setText(String.valueOf(iterative.getNumber()));
             efficiencyTextField.setText(String.valueOf(iterative.getEfficiency()));
         }
         else if (recursiveButton.isSelected()) {
-            recursive.computeRecursive(number);
+            recursive.computeRecursive(number);         // recursive method
             resultTextField.setText(String.valueOf(recursive.getNumber()));
             efficiencyTextField.setText(String.valueOf(recursive.getEfficiency()));            
         }
     }//GEN-LAST:event_computeButtonActionPerformed
     // ---------------------- OUTPUT DATA FILE UPON WINDOW CLOSE ---------------    
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
-
+        
+        String message;
+        
         // OutputData.txt File Header
         iterative = new Sequence(0);
         recursive = new Sequence(0);
         
         try (FileWriter dataOutput = new FileWriter("outputData.txt")) {
-            
+            // output.txt header data
             dataOutput.append("n,\t");
             dataOutput.append("Iterative Passes,\t");
             dataOutput.append("Recursive Passes");
             dataOutput.append("\n");
  
             // outputData.txt Recursive and Iterative efficiency
-            for (z = 0; z <= 10; z++) {
+            for (int z = 0; z <= 10; z++) {
                 dataOutput.append(String.valueOf(z));
                 dataOutput.append(",\t");
                 
                 iterative.computeIterative(z+1);
                 dataOutput.append(String.valueOf(iterative.getEfficiency()));
                 dataOutput.append(",\t\t\t");
-                System.out.print("iterative success " + z + " ");
                 
                 recursive.computeRecursive(z);
                 dataOutput.append(String.valueOf(recursive.getEfficiency()));             
                 dataOutput.append("\n");
-                
-                System.out.println("recursive success " + z);
-
-
             }
             dataOutput.flush();
             dataOutput.close();
             System.exit(0);
         } 
         catch (Exception e) {
-            evt.getID();
+            message = "Output Exception";
+            JOptionPane.showMessageDialog(null, message);
             System.exit(0);
         }
     
@@ -226,7 +223,7 @@ public class sequenceGUI extends javax.swing.JFrame {
         
         try {
             userInput = Integer.parseInt(inputTextField.getText());
-        // Ensure user input is a number
+        // Ensure user input is an integer
         } catch (NumberFormatException e) {
             message = "Input Error - PLEASE ENTER A NUMBER";
             JOptionPane.showMessageDialog(null, message);
