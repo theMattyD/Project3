@@ -179,36 +179,34 @@ public class sequenceGUI extends javax.swing.JFrame {
     // ---------------------- OUTPUT DATA FILE UPON WINDOW CLOSE ---------------    
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
 
-           try {
+        //prepare header
+        try (FileWriter dataOutput = new FileWriter("outputData.txt")) {
             //prepare header
-            try (FileWriter dataOutput = new FileWriter("outputData.txt")) {
-                //prepare header
-                dataOutput.append("n");
-                // comma inserted to help the excel program to add a column
-                dataOutput.append(',');
-                dataOutput.append("Recursive");
-                // comma inserted to help the excel program to add a column
-                dataOutput.append(',');
-                dataOutput.append("Iterative");
-                // comma inserted to help the excel program to add a column
-                dataOutput.append(',');
-                dataOutput.append('\n');
+            dataOutput.append("n");
+            // comma inserted to help the excel program to add a column
+            dataOutput.append(',');
+            dataOutput.append("Recursive");
+            // comma inserted to help the excel program to add a column
+            dataOutput.append(',');
+            dataOutput.append("Iterative");
+            // comma inserted to help the excel program to add a column
+            dataOutput.append(',');
+            dataOutput.append('\n');
 
-                for (int i = 0; i <= 10; i++) {
-                    dataOutput.append(String.valueOf(i));
-                    dataOutput.append(',');
-                    recursive.computeRecursive(i);
-                    dataOutput.append(String.valueOf(recursive.getEfficiency()));
-                    dataOutput.append(',');
-                    iterative.computeIterative(i);
-                    dataOutput.append(String.valueOf(iterative.getEfficiency()));
-                    dataOutput.append('\n');
-                }
-
-                dataOutput.flush();
-                dataOutput.close();
+            for (int i = 0; i <= 10; i++) {
+                dataOutput.append(String.valueOf(i));
+                dataOutput.append(",");
+                recursive.computeRecursive(i);
+                dataOutput.append(String.valueOf(recursive.getEfficiency()));
+                dataOutput.append(",");
+                iterative.computeIterative(i);
+                dataOutput.append(String.valueOf(iterative.getEfficiency()));
+                dataOutput.append("\n");
             }
-        } catch (Exception e) {
+            dataOutput.flush();
+            dataOutput.close();
+        } 
+        catch (Exception e) {
             System.err.println("Unable to write to the file" + e.getMessage() + " ");
             System.exit(0);
         }
