@@ -1,4 +1,5 @@
 
+import java.io.FileWriter;
 import javax.swing.JOptionPane;
 
 // Developer:   Matthew Daniels
@@ -34,7 +35,7 @@ public class sequenceGUI extends javax.swing.JFrame {
         efficiencyLabel = new javax.swing.JLabel();
         recursiveButton = new javax.swing.JRadioButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setTitle("Project 3");
 
         buttonGroup1.add(iterativeButton);
@@ -77,26 +78,30 @@ public class sequenceGUI extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(31, 31, 31)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(resetButton, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(enterLabel)
                             .addComponent(resultLabel)
                             .addComponent(efficiencyLabel))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
-                        .addComponent(computeButton)
-                        .addGap(18, 18, 18))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(resetButton, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(resultTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(efficiencyTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(inputTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(recursiveButton, javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(iterativeButton, javax.swing.GroupLayout.Alignment.TRAILING)))
-                .addGap(19, 19, 19))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(inputTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(recursiveButton, javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(iterativeButton, javax.swing.GroupLayout.Alignment.TRAILING))
+                                        .addGap(2, 2, 2))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(5, 5, 5)
+                                        .addComponent(computeButton))))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(resultTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(efficiencyTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(45, Short.MAX_VALUE))
         );
 
         layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {efficiencyTextField, inputTextField, resultTextField});
@@ -182,6 +187,52 @@ public class sequenceGUI extends javax.swing.JFrame {
         }
         return(userInput);
     }
+    
+    WindowAdapterImplementations wai = new WindowAdapterImplementations();
+    
+    
+    class WindowAdapterImplementations extends WindowAdapter {
+    
+    // ---------------------- OUTPUT DATA FILE UPON WINDOW CLOSE ---------------
+        private int windowClosing() throws Exception {
+
+        try {
+            //prepare header
+            try (FileWriter dataOutput = new FileWriter("outData.txt")) {
+                //prepare header
+                dataOutput.append("n");
+                // comma inserted to help the excel program to add a column
+                dataOutput.append(',');
+                dataOutput.append("Recursive");
+                // comma inserted to help the excel program to add a column
+                dataOutput.append(',');
+                dataOutput.append("Iterative");
+                // comma inserted to help the excel program to add a column
+                dataOutput.append(',');
+                dataOutput.append('\n');
+                
+                for (int i = 0; i <= 10; i++) {
+                    dataOutput.append(String.valueOf(i));
+                    dataOutput.append(',');
+                    recursive.computeRecursive(i);
+                    dataOutput.append(String.valueOf(recursive.getEfficiency()));
+                    dataOutput.append(',');
+                    iterative.computeIterative(i);
+                    dataOutput.append(String.valueOf(iterative.getEfficiency()));
+                    dataOutput.append('\n');
+                }
+                
+                dataOutput.flush();
+            }
+        } 
+        catch (Exception e) {
+            System.err.println("Unable to write to the file" + e.getMessage() + " ");
+            System.exit(0);
+        }   
+        return(0);
+    }
+    }
+    
     
     public static void main(String args[]) {
        

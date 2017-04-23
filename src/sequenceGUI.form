@@ -6,7 +6,7 @@
     </Component>
   </NonVisualComponents>
   <Properties>
-    <Property name="defaultCloseOperation" type="int" value="3"/>
+    <Property name="defaultCloseOperation" type="int" value="0"/>
     <Property name="title" type="java.lang.String" value="Project 3"/>
   </Properties>
   <SyntheticProperties>
@@ -31,33 +31,40 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="31" pref="31" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
+                  <Component id="resetButton" alignment="0" min="-2" pref="112" max="-2" attributes="0"/>
+                  <Group type="102" alignment="0" attributes="0">
                       <Group type="103" groupAlignment="1" attributes="0">
                           <Component id="enterLabel" linkSize="3" min="-2" max="-2" attributes="0"/>
                           <Component id="resultLabel" linkSize="3" min="-2" max="-2" attributes="0"/>
                           <Component id="efficiencyLabel" linkSize="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="43" max="32767" attributes="0"/>
-                      <Component id="computeButton" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <Component id="resetButton" min="-2" pref="112" max="-2" attributes="0"/>
-                      <EmptySpace max="32767" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" attributes="0">
+                              <Component id="inputTextField" linkSize="2" min="-2" pref="104" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="recursiveButton" linkSize="4" alignment="1" min="-2" max="-2" attributes="0"/>
+                                          <Component id="iterativeButton" linkSize="4" alignment="1" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <EmptySpace min="5" pref="5" max="-2" attributes="0"/>
+                                      <Component id="computeButton" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                          </Group>
+                          <Group type="103" groupAlignment="1" attributes="0">
+                              <Component id="resultTextField" linkSize="2" alignment="1" min="-2" pref="133" max="-2" attributes="0"/>
+                              <Component id="efficiencyTextField" linkSize="2" alignment="1" min="-2" pref="124" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
                   </Group>
               </Group>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="103" groupAlignment="1" attributes="0">
-                      <Component id="resultTextField" linkSize="2" alignment="1" min="-2" pref="133" max="-2" attributes="0"/>
-                      <Component id="efficiencyTextField" linkSize="2" alignment="1" min="-2" pref="124" max="-2" attributes="0"/>
-                      <Component id="inputTextField" linkSize="2" min="-2" pref="104" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="recursiveButton" linkSize="4" alignment="1" min="-2" max="-2" attributes="0"/>
-                      <Component id="iterativeButton" linkSize="4" alignment="1" min="-2" max="-2" attributes="0"/>
-                  </Group>
-              </Group>
-              <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
+              <EmptySpace pref="45" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
