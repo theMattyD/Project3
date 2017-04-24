@@ -8,10 +8,6 @@
 
 public class Sequence {
     
-    // to do list - all methods need to be static
-    //              all isntance variables private
-    //              exception handler sucks
-    
     private static int number;
     private static int efficiency;
     
