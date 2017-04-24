@@ -6,13 +6,11 @@
 
 import java.io.FileWriter;
 import javax.swing.JOptionPane;
+import java.io.IOException;
 
 public class sequenceGUI extends javax.swing.JFrame {
     
     public int number;
-
-    Sequence iterative = new Sequence(0);
-    Sequence recursive = new Sequence(0);
 
     public sequenceGUI() {
         initComponents();
@@ -149,8 +147,6 @@ public class sequenceGUI extends javax.swing.JFrame {
         inputTextField.setText("");
         resultTextField.setText("");
         efficiencyTextField.setText("");
-        iterative = new Sequence(0);
-        recursive = new Sequence(0);
     }//GEN-LAST:event_resetButtonActionPerformed
     // ------- EVENT HANDLER COMPUTE BUTTON - CALL SEQUENCES METHOD(S) ---------   
     private void computeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_computeButtonActionPerformed
@@ -163,24 +159,20 @@ public class sequenceGUI extends javax.swing.JFrame {
             return;
         }
         if (iterativeButton.isSelected()) {
-            iterative.computeIterative(number);         // iterative method
-            resultTextField.setText(String.valueOf(iterative.getNumber()));
-            efficiencyTextField.setText(String.valueOf(iterative.getEfficiency()));
+            Sequence.computeIterative(number);         // iterative method
+            resultTextField.setText(String.valueOf(Sequence.getNumber()));
+            efficiencyTextField.setText(String.valueOf(Sequence.getEfficiency()));
         }
         else if (recursiveButton.isSelected()) {
-            recursive.computeRecursive(number);         // recursive method
-            resultTextField.setText(String.valueOf(recursive.getNumber()));
-            efficiencyTextField.setText(String.valueOf(recursive.getEfficiency()));            
+            Sequence.computeRecursive(number);         // recursive method
+            resultTextField.setText(String.valueOf(Sequence.getNumber()));
+            efficiencyTextField.setText(String.valueOf(Sequence.getEfficiency()));            
         }
     }//GEN-LAST:event_computeButtonActionPerformed
     // ------------EVENT HANDLER - OUTPUT DATA FILE UPON WINDOW CLOSE ----------    
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
         
         String message;
-        
-        // OutputData.txt File Header
-        iterative = new Sequence(0);
-        recursive = new Sequence(0);
         
         try (FileWriter dataOutput = new FileWriter("outputData.txt")) {
             // output.txt header data
@@ -194,19 +186,19 @@ public class sequenceGUI extends javax.swing.JFrame {
                 dataOutput.append(String.valueOf(z));
                 dataOutput.append(",\t");
                 
-                iterative.computeIterative(z+1);
-                dataOutput.append(String.valueOf(iterative.getEfficiency()));
+                Sequence.computeIterative(z+1);
+                dataOutput.append(String.valueOf(Sequence.getEfficiency()));
                 dataOutput.append(",\t\t\t");
                 
-                recursive.computeRecursive(z);
-                dataOutput.append(String.valueOf(recursive.getEfficiency()));             
+                Sequence.computeRecursive(z);
+                dataOutput.append(String.valueOf(Sequence.getEfficiency()));             
                 dataOutput.append("\n");
             }
             dataOutput.flush();
             dataOutput.close();
             System.exit(0);
         } 
-        catch (Exception e) {
+        catch (IOException e) {
             message = "Output Exception";
             JOptionPane.showMessageDialog(null, message);
             System.exit(0);

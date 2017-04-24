@@ -15,11 +15,7 @@ public class Sequence {
     private static int number;
     private static int efficiency;
     
-    public Sequence(int userInputArg) {
-    number = userInputArg;
-    }
-    
-    public int getNumber(){
+    public static int getNumber(){
         return number;
     }
     
