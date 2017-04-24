@@ -8,6 +8,10 @@
 
 public class Sequence {
     
+    // to do list - all methods need to be static
+    //              all isntance variables private
+    //              exception handler sucks
+    
     private int number;
     private int efficiency;
     
@@ -23,7 +27,7 @@ public class Sequence {
     public int computeIterative(int userInput) {
         
         efficiency = 0;
-        int value[] = new int[userInput + 1];
+        int value[] = new int[userInput + 2];
         value[0] = 0;
         value[1] = 1;
         
