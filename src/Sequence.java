@@ -12,8 +12,8 @@ public class Sequence {
     //              all isntance variables private
     //              exception handler sucks
     
-    private int number;
-    private int efficiency;
+    private static int number;
+    private static int efficiency;
     
     public Sequence(int userInputArg) {
     number = userInputArg;
@@ -24,7 +24,7 @@ public class Sequence {
     }
     
     // ------------------------ ITERATIVE METHOD -------------------------------
-    public int computeIterative(int userInput) {
+    public static int computeIterative(int userInput) {
         
         efficiency = 0;
         int value[] = new int[userInput + 2];
