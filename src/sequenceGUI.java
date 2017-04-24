@@ -152,7 +152,7 @@ public class sequenceGUI extends javax.swing.JFrame {
         iterative = new Sequence(0);
         recursive = new Sequence(0);
     }//GEN-LAST:event_resetButtonActionPerformed
-    // ---------------------- CALL SEQUENCES METHOD(S) -------------------------   
+    // ------- EVENT HANDLER COMPUTE BUTTON - CALL SEQUENCES METHOD(S) ---------   
     private void computeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_computeButtonActionPerformed
         
         
@@ -173,7 +173,7 @@ public class sequenceGUI extends javax.swing.JFrame {
             efficiencyTextField.setText(String.valueOf(recursive.getEfficiency()));            
         }
     }//GEN-LAST:event_computeButtonActionPerformed
-    // ---------------------- OUTPUT DATA FILE UPON WINDOW CLOSE ---------------    
+    // ------------EVENT HANDLER - OUTPUT DATA FILE UPON WINDOW CLOSE ----------    
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
         
         String message;

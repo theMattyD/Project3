@@ -40,7 +40,7 @@ public class Sequence {
     }
     
     // ------------------------ RECURSIVE METHOD -------------------------------   
-    public int computeRecursive(int userInput) {
+    public static int computeRecursive(int userInput) {
         efficiency++;
         switch (userInput) {
             case 0:
@@ -55,7 +55,7 @@ public class Sequence {
     }
     
     // --------------------- EFFICIENCY COUNTER METHOD -------------------------    
-    public int getEfficiency() {
+    public static int getEfficiency() {
         return efficiency;
     }    
 }
